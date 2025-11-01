@@ -18,20 +18,20 @@ import frc.robot.Ports;
 import frc.robot.Robot;
 
 public class PivotConstants {
-    public static final Angle epsilonThreshold = Units.Degrees.of(5.0); //
-    public static final double gearing = (100.0 / 1.0) * (26.0 / 16.0); //
+    public static final Angle epsilonThreshold = Units.Degrees.of(5.0);
+    public static final double gearing = (100.0 / 1.0) * (26.0 / 16.0);
     public static final DCMotor motor = DCMotor.getNEO(1);
 
-    public static final Angle minAngle = Units.Degrees.of(-21.0); //
-    public static final Angle maxAngle = Units.Degrees.of(57.0); //
+    public static final Angle minAngle = Units.Degrees.of(-21.0);
+    public static final Angle maxAngle = Units.Degrees.of(57.0);
 
-    public static final Angle deployAlgaeInAngle = Units.Radians.of(0.0); //
-    public static final Angle deployAlgaeOutAngle = Units.Radians.of(0.0); //
-    public static final Angle deployCoralIntakeAngle = Units.Radians.of(0.0); //
-    public static final Angle deployCoralL1Angle = Units.Radians.of(0.0); //
-    public static final Angle deployCoralL2Angle = Units.Radians.of(0.0); //
-    public static final Angle deployCoralL3Angle = Units.Radians.of(0.0); //
-    public static final Angle stowAngle = Units.Radians.of(0.0); //
+    public static final Angle deployAlgaeInAngle = Units.Radians.of(0.0);
+    public static final Angle deployAlgaeOutAngle = Units.Radians.of(0.0);
+    public static final Angle deployCoralIntakeAngle = Units.Radians.of(0.0);
+    public static final Angle deployCoralL1Angle = Units.Radians.of(0.0);
+    public static final Angle deployCoralL2Angle = Units.Radians.of(0.0);
+    public static final Angle deployCoralL3Angle = Units.Radians.of(0.0);
+    public static final Angle stowAngle = Units.Radians.of(0.0);
 
     // Setpoints
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
@@ -89,12 +89,12 @@ public class PivotConstants {
         SingleJointedArmSim system = new SingleJointedArmSim(
                 motor,
                 gearing,
-                0.01, //
+                0.01,
                 0.46,
                 minAngle.in(Units.Radians),
                 maxAngle.in(Units.Radians),
                 false,
-                0.0, //
+                0.0,
                 0.0, 0.0);
         return new PivotSim(system);
     }
