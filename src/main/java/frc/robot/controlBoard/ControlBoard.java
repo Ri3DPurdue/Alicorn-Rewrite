@@ -6,6 +6,11 @@ import frc.robot.subsystems.Superstructure;
 public class ControlBoard {
     public static final CommandXboxController driver = new CommandXboxController(0);
     public static void bindControls(Superstructure s) {
+        driver.a().onTrue(s.intakeCoral());
+        driver.b().onTrue(s.outtakeCoralL2());
+        driver.x().onTrue(s.stow());
 
+        driver.leftBumper().whileTrue(s.driveClimberUp());
+        driver.rightBumper().whileTrue(s.driveClimberDown());
     }
 }
