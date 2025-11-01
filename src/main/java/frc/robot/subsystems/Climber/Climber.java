@@ -18,14 +18,23 @@ public class Climber extends ComponentSubsystem {
     }
 
     public Command stow() {
-        return climber.applySetpointCommand(ClimberConstants.stowSetpoint);
+        Command c = climber.applySetpointCommand(ClimberConstants.stowSetpoint);
+        c.addRequirements(this);
+
+        return c;
     }
 
     public Command raised() {
-        return climber.applySetpointCommand(ClimberConstants.raisedSetpoint);
+        Command c = climber.applySetpointCommand(ClimberConstants.raisedSetpoint);
+        c.addRequirements(this);
+
+        return c;
     }
 
     public Command pull() {
-        return climber.applySetpointCommand(ClimberConstants.pullSetpoint);
+        Command c = climber.applySetpointCommand(ClimberConstants.pullSetpoint);
+        c.addRequirements(this);
+
+        return c;
     }
 }
