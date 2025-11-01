@@ -229,8 +229,8 @@ public class SparkBaseIO extends MotorIO {
         main.encoder.setPosition(position.in(Units.Rotations));
     }
 
-    public static SparkBaseConfig getSafeConfig() {
-        SparkBaseConfig config = new SparkMaxConfig();
+    public static SparkMaxConfig getSafeSparkMaxConfig() {
+        SparkMaxConfig config = new SparkMaxConfig();
         config.smartCurrentLimit(20);
         config.idleMode(SparkMaxConfig.IdleMode.kBrake);
         config.limitSwitch.forwardLimitSwitchEnabled(false)
