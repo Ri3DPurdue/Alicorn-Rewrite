@@ -16,7 +16,10 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command stow() {
-        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.stowSetpoint);
+        return parallel(
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.stowSetpoint),
+            roller.applySetpointCommand(RollerConstants.idleSetpoint)
+        );
     }
 
     public Command intakeAlgae() {
@@ -27,11 +30,16 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command prepOuttakeAlgae() {
-        return pivot.applySetpointCommand(PivotConstants.algaeOuttakeSetpoint);
+        return parallel(
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.algaeOuttakeSetpoint),
+            roller.applySetpointCommand(RollerConstants.idleSetpoint)
+        );
     }
 
     public Command outtakeAlgae() {
-        return roller.applySetpointCommand(RollerConstants.algaeOuttakeSetpoint);
+        return command(
+            roller.applySetpointCommand(RollerConstants.algaeOuttakeSetpoint)
+        );
     }
 
     public Command intakeCoral() {
@@ -42,15 +50,25 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command prepL1() {
-        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.l1Setpoint);
+        return parallel(
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.l1Setpoint),
+            roller.applySetpointCommand(RollerConstants.idleSetpoint)
+        );
+
     }
 
     public Command prepL2() {
-        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.l2Setpoint);
+        return parallel(
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.l2Setpoint),
+            roller.applySetpointCommand(RollerConstants.idleSetpoint)
+        );
     }
 
     public Command prepL3() {
-        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.l3Setpoint);
+        return parallel(
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.l3Setpoint),
+            roller.applySetpointCommand(RollerConstants.idleSetpoint)
+        );
     }
 
     public Command scoreCoral() {

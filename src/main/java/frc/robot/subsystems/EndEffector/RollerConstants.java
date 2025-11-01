@@ -56,7 +56,12 @@ public class RollerConstants {
     }
 
     public static final SparkBaseConfig getMainConfig() {
-        SparkMaxConfig config = new SparkMaxConfig();
+        SparkMaxConfig config = SparkBaseIO.getSafeSparkMaxConfig();
+
+        config.encoder
+            .positionConversionFactor(gearing)
+            .velocityConversionFactor(gearing);
+            
         return config;
     }
 
