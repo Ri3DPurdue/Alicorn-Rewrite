@@ -12,7 +12,7 @@ public class DrivetrainConstants {
     @SuppressWarnings({ "unchecked" })
     public static SparkBaseIO getLeftMotorIO() {
         return new SparkBaseIO(
-            MotorType.kBrushless,
+            MotorType.kBrushed,
             getMotorConfig(),
             Ports.DRIVETRAIN_LEFT_MAIN.id,
             new Pair<>(Ports.DRIVETRAIN_LEFT_FOLLOWER.id, false)
@@ -22,7 +22,7 @@ public class DrivetrainConstants {
     @SuppressWarnings({ "unchecked" })
     public static SparkBaseIO getRightMotorIO() {
         return new SparkBaseIO(
-            MotorType.kBrushless,
+            MotorType.kBrushed,
             getMotorConfig(),
             Ports.DRIVETRAIN_RIGHT_MAIN.id,
             new Pair<>(Ports.DRIVETRAIN_RIGHT_FOLLOWER.id, false)
