@@ -1,18 +1,14 @@
 package frc.robot;
 
 public enum Ports {
-    INTAKE_PIVOT_MAIN(8, "rio"),
-    INTAKE_PIVOT_FOLLOWER(9, "rio"),
-    INTAKE_ROLLERS(10, "rio"),
-    INTAKE_INDEXER(11, "rio"),
-
-        CLIMBER_MOTOR(6, "rio"),
-        
     DRIVETRAIN_LEFT_MAIN(0, "rio"),
     DRIVETRAIN_LEFT_FOLLOWER(1, "rio"),
     DRIVETRAIN_RIGHT_MAIN(2, "rio"),
     DRIVETRAIN_RIGHT_FOLLOWER(3, "rio"),
-
+    CLIMBER_MOTOR(6, "rio"),
+    END_EFFECTOR_PIVOT_MAIN(8, "rio"),
+    END_EFFECTOR_PIVOT_FOLLOWER(9, "rio"),
+    END_EFFECTOR_ROLLERS(10, "rio"),
     FOUR_BAR_ARM_MAIN(12, "rio");
 
     public final int id;
