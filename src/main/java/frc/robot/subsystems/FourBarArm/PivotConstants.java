@@ -25,12 +25,12 @@ public class PivotConstants {
     public static final Angle minAngle = Units.Degrees.of(-21.0);
     public static final Angle maxAngle = Units.Degrees.of(57.0);
 
-    public static final Angle deployAlgaeInAngle = Units.Degrees.of(0.0);
-    public static final Angle deployAlgaeOutAngle = Units.Degrees.of(0.0);
-    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(0.0);
-    public static final Angle deployCoralL1Angle = Units.Degrees.of(0.0);
-    public static final Angle deployCoralL2Angle = Units.Degrees.of(0.0);
-    public static final Angle deployCoralL3Angle = Units.Degrees.of(0.0);
+    public static final Angle deployAlgaeInAngle = Units.Degrees.of(-20.0);
+    public static final Angle deployAlgaeOutAngle = Units.Degrees.of(-10.0);
+    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(40.0);
+    public static final Angle deployCoralL1Angle = Units.Degrees.of(10.0);
+    public static final Angle deployCoralL2Angle = Units.Degrees.of(20.0);
+    public static final Angle deployCoralL3Angle = Units.Degrees.of(30.0);
     public static final Angle stowAngle = minAngle;
 
     // Setpoints
@@ -69,7 +69,7 @@ public class PivotConstants {
     public static final SparkBaseConfig getMainConfig() {
         SparkMaxConfig config = SparkBaseIO.getSafeSparkMaxConfig();
         config.closedLoop
-                .p(0.15)
+                .p(0.4)
                 .d(0.15);
 
         config.smartCurrentLimit(20);
