@@ -72,6 +72,8 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command scoreCoral() {
-        return roller.applySetpointCommand(RollerConstants.coralOuttakeSetpoint);
+        return command(
+            roller.applySetpointCommand(RollerConstants.coralOuttakeSetpoint)
+        );
     }
 }
