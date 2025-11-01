@@ -29,18 +29,18 @@ public class FourBarArm extends ComponentSubsystem {
     // ========= CORAL COMMANDS =========
 
     public Command intakeCoral() {
-        return pivot.applySetpointCommand(PivotConstants.deployCoralInSetpoint);
+        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.deployCoralInSetpoint);
     }
 
     public Command outtakeCoralL1() {
-        return pivot.applySetpointCommand(PivotConstants.deployCoralL1Setpoint);
+        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.deployCoralL1Setpoint);
     }
 
     public Command outtakeCoralL2() {
-        return pivot.applySetpointCommand(PivotConstants.deployCoralL2Setpoint);
+        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.deployCoralL2Setpoint);
     }
 
     public Command outtakeCoralL3() {
-        return pivot.applySetpointCommand(PivotConstants.deployCoralL3Setpoint);
+        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.deployCoralL3Setpoint);
     }
 }
