@@ -41,7 +41,7 @@ public class Climber extends ComponentSubsystem {
     }
 
     public Command driveUp() {
-        return Commands.runEnd(() -> {
+        return Commands.startEnd(() -> {
             climber.applySetpoint(ClimberConstants.driveUpSetpoint);
         }, () -> {
             climber.applySetpoint(new IdleSetpoint());
@@ -49,7 +49,7 @@ public class Climber extends ComponentSubsystem {
     }
 
     public Command driveDown() {
-        return Commands.runEnd(() -> {
+        return Commands.startEnd(() -> {
             climber.applySetpoint(ClimberConstants.driveDownSetpoint);
         }, () -> {
             climber.applySetpoint(new IdleSetpoint());
