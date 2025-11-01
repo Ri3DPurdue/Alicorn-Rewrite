@@ -83,6 +83,14 @@ public class Superstructure implements Loggable {
         return climber.pull().withName("Lift");
     }
 
+    public Command driveClimberUp() {
+        return climber.driveUp().withName("Drive Up");
+    }
+
+    public Command driveClimberDown() {
+        return climber.driveDown().withName("Drive Down");
+    }
+
     // ========= DRIVING COMMANDS =========
     public Command arcadeDrive(DoubleSupplier forward, DoubleSupplier rotation) {
         return drivetrain.arcadeDrive(forward, rotation);
