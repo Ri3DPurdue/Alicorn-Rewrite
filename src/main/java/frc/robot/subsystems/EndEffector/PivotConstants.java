@@ -25,7 +25,7 @@ public class PivotConstants {
     public static final Angle minAngle = Units.Degrees.of(-26);
     public static final Angle maxAngle = Units.Degrees.of(43);
 
-    public static final Angle stowAngle = Units.Degrees.of(43);
+    public static final Angle stowAngle = maxAngle;
     public static final Angle algaeIntakeAngle = Units.Degrees.of(0.0);
     public static final Angle algaeOuttakeAngle = Units.Degrees.of(0.0);
     public static final Angle l1Angle = Units.Degrees.of(0.0);

@@ -31,7 +31,7 @@ public class PivotConstants {
     public static final Angle deployCoralL1Angle = Units.Degrees.of(0.0);
     public static final Angle deployCoralL2Angle = Units.Degrees.of(0.0);
     public static final Angle deployCoralL3Angle = Units.Degrees.of(0.0);
-    public static final Angle stowAngle = Units.Degrees.of(57);
+    public static final Angle stowAngle = minAngle;
 
     // Setpoints
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
