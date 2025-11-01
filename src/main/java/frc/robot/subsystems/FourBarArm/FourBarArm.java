@@ -13,7 +13,7 @@ public class FourBarArm extends ComponentSubsystem {
     }
 
     public Command stow() {
-        return pivot.applySetpointCommand(PivotConstants.stowSetpoint);
+        return pivot.applyPositionSetpointCommandWithWait(PivotConstants.stowSetpoint);
     }
 
     // ========= ALGAE COMMANDS =========
