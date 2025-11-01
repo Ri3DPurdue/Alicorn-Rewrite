@@ -19,23 +19,23 @@ import frc.robot.Robot;
 
 public class PivotConstants {
     public static final Angle epsilonThreshold = Units.Degrees.of(10.0);
-    public static final double gearing = 1.0;
+    public static final double gearing = 3.0;
     public static final DCMotor motor = DCMotor.getNeo550(1);
 
-    public static final Angle minAngle = Units.Radians.of(0.0);
-    public static final Angle maxAngle = Units.Radians.of(0.0);
+    public static final Angle minAngle = Units.Degrees.of(-26);
+    public static final Angle maxAngle = Units.Degrees.of(43);
 
-    public static final Angle stowAngle = Units.Degrees.of(0.0);
-    public static final Angle algaaeIntakeAngle = Units.Degrees.of(0.0);
+    public static final Angle stowAngle = maxAngle;
+    public static final Angle algaeIntakeAngle = Units.Degrees.of(0.0);
     public static final Angle algaeOuttakeAngle = Units.Degrees.of(0.0);
     public static final Angle l1Angle = Units.Degrees.of(0.0);
     public static final Angle l2Angle = Units.Degrees.of(0.0);
     public static final Angle l3Angle = Units.Degrees.of(0.0);
-    public static final Angle coralIntakeAngle = Units.Degrees.of(0.0);
+    public static final Angle coralIntakeAngle = Units.Degrees.of(-15);
 
 
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
-    public static final PositionSetpoint algaeIntakeSetpoint = new PositionSetpoint(algaaeIntakeAngle);
+    public static final PositionSetpoint algaeIntakeSetpoint = new PositionSetpoint(algaeIntakeAngle);
     public static final PositionSetpoint algaeOuttakeSetpoint = new PositionSetpoint(algaeOuttakeAngle);
     public static final PositionSetpoint l1Setpoint = new PositionSetpoint(l1Angle);
     public static final PositionSetpoint l2Setpoint = new PositionSetpoint(l2Angle);
@@ -43,6 +43,9 @@ public class PivotConstants {
     public static final PositionSetpoint coralIntakeSetpoint = new PositionSetpoint(coralIntakeAngle);
 
     public static final ServoMotorComponent<SparkBaseIO> getPivot() {
+        SparkBaseIO io = getMotorIO();
+        io.overrideLoggedUnits(Units.Degrees, Units.DegreesPerSecond, Units.Celsius);
+
         return new ServoMotorComponent<SparkBaseIO>(getMotorIO(), epsilonThreshold, stowAngle);
     }
 
@@ -72,8 +75,13 @@ public class PivotConstants {
             .d(0.0);
         
         config.encoder
-            .positionConversionFactor(gearing)
-            .velocityConversionFactor(gearing);
+            .positionConversionFactor(1 / gearing)
+            .velocityConversionFactor(1 / gearing);
+        
+        config.softLimit.forwardSoftLimitEnabled(true)
+                .forwardSoftLimit(maxAngle.in(Units.Rotations))
+                .reverseSoftLimitEnabled(true)
+                .reverseSoftLimit(minAngle.in(Units.Rotations));
 
         return config;    
     }

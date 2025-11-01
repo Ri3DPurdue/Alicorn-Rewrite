@@ -1,5 +1,7 @@
 package frc.robot.subsystems.EndEffector;
 
+import static edu.wpi.first.units.Units.Celsius;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -35,7 +37,9 @@ public class RollerConstants {
     public static final IdleSetpoint idleSetpoint = new IdleSetpoint();
 
     public static final MotorComponent<SparkBaseIO> getRoller() {
-        return new MotorComponent<SparkBaseIO>(getMotorIO());
+        SparkBaseIO motorIO = getMotorIO();
+        motorIO.overrideLoggedUnits(Units.Rotations, Units.RPM, Units.Celsius);
+        return new MotorComponent<SparkBaseIO>(motorIO);
     }
 
     @SuppressWarnings("unchecked")
