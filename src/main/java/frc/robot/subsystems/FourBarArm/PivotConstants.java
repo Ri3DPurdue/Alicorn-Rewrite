@@ -18,20 +18,20 @@ import frc.robot.Robot;
 
 public class PivotConstants {
     // TODO: Find proper values for FourBarArm constants
-    public static final Angle epsilonThreshold = Units.Degrees.of(10.0); //
+    public static final Angle epsilonThreshold = Units.Degrees.of(5.0); //
     public static final double gearing = 1.0; //
     public static final DCMotor motor = DCMotor.getNEO(1);
 
-    public static final Angle minAngle = Units.Radians.of(-10.0); //
-    public static final Angle maxAngle = Units.Radians.of(110.0); //
+    public static final Angle minAngle = Units.Radians.of(0.0); //
+    public static final Angle maxAngle = Units.Radians.of(0.0); //
 
-    public static final Angle deployAlgaeInAngle = Units.Radians.of(10.0); //
-    public static final Angle deployAlgaeOutAngle = Units.Radians.of(10.0); //
-    public static final Angle deployCoralIntakeAngle = Units.Radians.of(10.0); //
-    public static final Angle deployCoralL1Angle = Units.Radians.of(10.0); //
-    public static final Angle deployCoralL2Angle = Units.Radians.of(10.0); //
-    public static final Angle deployCoralL3Angle = Units.Radians.of(10.0); //
-    public static final Angle stowAngle = Units.Radians.of(110.0); //
+    public static final Angle deployAlgaeInAngle = Units.Radians.of(0.0); //
+    public static final Angle deployAlgaeOutAngle = Units.Radians.of(0.0); //
+    public static final Angle deployCoralIntakeAngle = Units.Radians.of(0.0); //
+    public static final Angle deployCoralL1Angle = Units.Radians.of(0.0); //
+    public static final Angle deployCoralL2Angle = Units.Radians.of(0.0); //
+    public static final Angle deployCoralL3Angle = Units.Radians.of(0.0); //
+    public static final Angle stowAngle = Units.Radians.of(0.0); //
 
     // Setpoints
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
@@ -70,8 +70,8 @@ public class PivotConstants {
                 .d(0.15); //
 
         config.smartCurrentLimit(20);
-        config.alternateEncoder.positionConversionFactor(gearing)
-                .velocityConversionFactor(gearing / 60.0);
+        config.alternateEncoder.positionConversionFactor(gearing) // In arm rotations
+                .velocityConversionFactor(gearing);
 
         config.idleMode(SparkMaxConfig.IdleMode.kBrake);
         return config;
