@@ -6,11 +6,22 @@ import frc.robot.subsystems.Superstructure;
 public class ControlBoard {
     public static final CommandXboxController driver = new CommandXboxController(0);
     public static void bindControls(Superstructure s) {
-        driver.a().onTrue(s.intakeCoral());
-        driver.b().onTrue(s.outtakeCoralL2());
-        driver.x().onTrue(s.stow());
+        driver.a().onTrue(s.outtakeCoralL1());
+        driver.x().onTrue(s.outtakeCoralL2());
+        driver.y().onTrue(s.outtakeCoralL3());
 
-        driver.leftBumper().whileTrue(s.driveClimberUp());
-        driver.rightBumper().whileTrue(s.driveClimberDown());
+        driver.b().onTrue(s.stowManipulator());
+
+        driver.leftTrigger().onTrue(s.intakeCoral());
+        driver.rightTrigger().onTrue(s.spitCoral());
+
+        driver.leftBumper().onTrue(s.intakeAlgae());
+        driver.rightBumper().onTrue(s.spitAlgae());
+
+        driver.povLeft().onTrue(s.prepOuttakeAlgae());
+
+        driver.povUp().whileTrue(s.driveClimberUp());
+        driver.povUp().whileTrue(s.driveClimberDown());
+        driver.povRight().whileTrue(s.liftRobot());
     }
 }
