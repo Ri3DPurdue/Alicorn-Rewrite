@@ -237,4 +237,13 @@ public class SparkBaseIO extends MotorIO {
                 .reverseLimitSwitchEnabled(false);
         return config;
     }
+
+    public static SparkFlexConfig getSafeSparkFlexConfig() {
+        SparkFlexConfig config = new SparkFlexConfig();
+        config.smartCurrentLimit(20);
+        config.idleMode(SparkMaxConfig.IdleMode.kBrake);
+        config.limitSwitch.forwardLimitSwitchEnabled(false)
+                .reverseLimitSwitchEnabled(false);
+        return config;
+    }
 }
