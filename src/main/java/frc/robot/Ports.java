@@ -5,8 +5,8 @@ public enum Ports {
     INTAKE_PIVOT_FOLLOWER(9, "rio"),
     INTAKE_ROLLERS(10, "rio"),
     INTAKE_INDEXER(11, "rio"),
-
     CLIMBER_MOTOR(6, "rio");
+    FOUR_BAR_ARM_MAIN(12, "rio");
 
     public final int id;
     public final String bus;
