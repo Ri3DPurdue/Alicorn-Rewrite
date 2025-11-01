@@ -50,38 +50,41 @@ public class PivotConstants {
 
     @SuppressWarnings("unchecked")
     public static final SparkBaseIO getMotorIO() {
-        return Robot.isReal() 
-            ? new SparkBaseIO(
-                MotorType.kBrushless, 
-                getMainConfig(), 
-                Ports.FOUR_BAR_ARM_MAIN.id
-                )
-            : new SparkBaseSimIO(
-                getSimObject(),
-                motor,
-                MotorType.kBrushless, 
-                getMainConfig(), 
-                Ports.FOUR_BAR_ARM_MAIN.id
-            );
+        return Robot.isReal()
+                ? new SparkBaseIO(
+                        MotorType.kBrushless,
+                        getMainConfig(),
+                        Ports.FOUR_BAR_ARM_MAIN.id)
+                : new SparkBaseSimIO(
+                        getSimObject(),
+                        motor,
+                        MotorType.kBrushless,
+                        getMainConfig(),
+                        Ports.FOUR_BAR_ARM_MAIN.id);
     }
 
     public static final SparkBaseConfig getMainConfig() {
-        SparkMaxConfig config = new SparkMaxConfig();
+        SparkMaxConfig config = (SparkMaxConfig) SparkBaseIO.getSafeConfig();
         config.closedLoop
-            .p(0.15) //
-            .d(0.15); //
-        return config;    
+                .p(0.15) //
+                .d(0.15); //
+
+        config.smartCurrentLimit(20);
+        config.alternateEncoder.positionConversionFactor(gearing)
+                .velocityConversionFactor(gearing / 60.0);
+
+        config.idleMode(SparkMaxConfig.IdleMode.kBrake);
+        return config;
     }
 
     public static final SimObject getSimObject() {
-        SingleJointedArmSim system = 
-            new SingleJointedArmSim(
-                motor, 
-                gearing, 
+        SingleJointedArmSim system = new SingleJointedArmSim(
+                motor,
+                gearing,
                 0.01, //
                 0.46,
-                minAngle.in(Units.Radians), 
-                maxAngle.in(Units.Radians), 
+                minAngle.in(Units.Radians),
+                maxAngle.in(Units.Radians),
                 false,
                 0.0, //
                 0.0, 0.0);
