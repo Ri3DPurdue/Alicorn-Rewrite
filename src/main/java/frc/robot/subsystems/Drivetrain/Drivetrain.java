@@ -6,6 +6,7 @@ import edu.wpi.first.units.Units;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.lib.Util.logging.Logger;
 import frc.lib.component.ComponentSubsystem;
 import frc.lib.io.motor.MotorIO;
 import frc.lib.io.motor.setpoints.VoltageSetpoint;
@@ -40,5 +41,13 @@ public class Drivetrain extends ComponentSubsystem {
         return Commands.run(() -> {
             this.drive.tankDrive(left.getAsDouble(), right.getAsDouble());
         }, this);
+    }
+
+    @Override
+    public void log(String name) {
+        super.log(name);
+
+        Logger.log(name, "Left Motor", leftMotor);
+        Logger.log(name, "Right Motor", rightMotor);
     }
 }
