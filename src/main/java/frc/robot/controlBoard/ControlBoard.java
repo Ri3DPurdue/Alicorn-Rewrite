@@ -21,7 +21,7 @@ public class ControlBoard {
         driver.povLeft().onTrue(s.prepOuttakeAlgae());
 
         driver.povUp().whileTrue(s.driveClimberUp());
-        driver.povUp().whileTrue(s.driveClimberDown());
+        driver.povDown().whileTrue(s.driveClimberDown());
         driver.povRight().whileTrue(s.liftRobot());
     }
 }
