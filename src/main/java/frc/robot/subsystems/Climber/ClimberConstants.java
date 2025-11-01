@@ -44,9 +44,7 @@ public class ClimberConstants {
     }
 
     private static SparkBaseConfig getMainConfig() {
-        SparkMaxConfig config = new SparkMaxConfig();
-
-        config.smartCurrentLimit(30);
+        SparkMaxConfig config = SparkBaseIO.getSafeSparkMaxConfig();
 
         return config;
     }
