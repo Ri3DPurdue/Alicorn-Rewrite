@@ -9,7 +9,9 @@ public enum Ports {
     DRIVETRAIN_LEFT_MAIN(0, "rio"),
     DRIVETRAIN_LEFT_FOLLOWER(1, "rio"),
     DRIVETRAIN_RIGHT_MAIN(2, "rio"),
-    DRIVETRAIN_RIGHT_FOLLOWER(3, "rio");
+    DRIVETRAIN_RIGHT_FOLLOWER(3, "rio"),
+
+    FOUR_BAR_ARM_MAIN(12, "rio");
 
     public final int id;
     public final String bus;
