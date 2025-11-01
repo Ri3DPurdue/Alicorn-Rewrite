@@ -1,73 +1,71 @@
 package frc.robot.subsystems;
 
 import java.util.function.DoubleSupplier;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.lib.Util.logging.Loggable;
 import frc.lib.Util.logging.Logger;
 import frc.robot.subsystems.Drivetrain.Drivetrain;
-import frc.robot.subsystems.ExampleIntake.ExampleIntake;
 import frc.robot.subsystems.Climber.Climber;
-import frc.robot.subsystems.ExampleIntake.ExampleIntake;
+import frc.robot.subsystems.EndEffector.EndEffector;
 import frc.robot.subsystems.FourBarArm.FourBarArm;
 
 public class Superstructure implements Loggable {
-    public final ExampleIntake intake = new ExampleIntake();
     public final Climber climber = new Climber();
     public final Drivetrain drivetrain = new Drivetrain();
     public final FourBarArm fourBar = new FourBarArm();
+    public final EndEffector endEffector = new EndEffector();
 
-    public Command intake() {
-        return intake.intake().withName("Intake");
-    }
-
-    public Command spit() {
-        return intake.spit().withName("Spit");
-    }
-
-    public Command stow() {
+    public Command stowManipulator() {
         return Commands.parallel(
-            fourBar.stow().withName("Stow")
-        );
+                fourBar.stow(),
+                endEffector.stow()).withName("Stow Manipulator");
     }
 
     // ========= ALGAE COMMANDS =========
     public Command intakeAlgae() {
         return Commands.parallel(
-            fourBar.intakeAlgae().withName("Intake")
-            );
+                fourBar.intakeAlgae(),
+                endEffector.intakeAlgae()).withName("Intake");
     }
 
-    public Command outtakeAlgae() {
+    public Command prepOuttakeAlgae() {
         return Commands.parallel(
-            fourBar.outtakeAlgae().withName("Spit")
-        );
+                fourBar.outtakeAlgae(),
+                endEffector.prepOuttakeAlgae()).withName("Spit");
+    }
+
+    public Command spitAlgae() {
+        return endEffector.outtakeAlgae().withName("Spit Algae");
     }
 
     // ========= CORAL COMMANDS =========
     public Command intakeCoral() {
         return Commands.parallel(
-            fourBar.intakeCoral().withName("Intake Coral")
-        );
+                fourBar.intakeCoral(),
+                endEffector.intakeCoral()).withName("Intake Coral");
     }
 
-    public Command outtakeCoralL1() {
+    public Command prepCoralL1() {
         return Commands.parallel(
-            fourBar.outtakeCoralL1().withName("Outtake Coral L1")
-        );
+                fourBar.outtakeCoralL1(),
+                endEffector.prepL1()).withName("Outtake Coral L1");
     }
 
-    public Command outtakeCoralL2() {
+    public Command prepCoralL2() {
         return Commands.parallel(
-            fourBar.outtakeCoralL2().withName("Outtake Coral L2")
-        );
+                fourBar.outtakeCoralL2(),
+                endEffector.prepL2()).withName("Outtake Coral L2");
     }
 
-    public Command outtakeCoralL3() {
+    public Command prepCoralL3() {
         return Commands.parallel(
-            fourBar.outtakeCoralL3().withName("Outtake Coral L3")
-        );
+                fourBar.outtakeCoralL3(),
+                endEffector.prepL3()).withName("Outtake Coral L3");
+    }
+
+    public Command spitCoral() {
+        return endEffector.scoreCoral().withName("Spit Coral");
     }
 
     // ========= CLIMBER COMMANDS =========
@@ -103,5 +101,6 @@ public class Superstructure implements Loggable {
     @Override
     public void log(String path) {
         Logger.log(path, "FourBarArm", fourBar);
+        Logger.log(path, "EndEffector", endEffector);
     }
 }
