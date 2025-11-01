@@ -20,7 +20,7 @@ import frc.robot.Robot;
 
 public class PivotConstants {
     public static final Angle epsilonThreshold = Units.Degrees.of(10.0);
-    public static final double gearing = 1.0;
+    public static final double gearing = 3.0;
     public static final DCMotor motor = DCMotor.getNeo550(2);
 
     public static final Angle minAngle = Units.Radians.of(-10.0);
@@ -62,6 +62,12 @@ public class PivotConstants {
         config.closedLoop
             .p(0.15)
             .d(0.15);
+        config.softLimit
+            .forwardSoftLimitEnabled(true)
+            .forwardSoftLimit(maxAngle.in(Units.Rotations))
+            .reverseSoftLimitEnabled(true)
+            .reverseSoftLimit(minAngle.in(Units.Rotations));
+
         return config;    
     }
 
