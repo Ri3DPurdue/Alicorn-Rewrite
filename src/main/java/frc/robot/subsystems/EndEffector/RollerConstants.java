@@ -1,7 +1,5 @@
 package frc.robot.subsystems.EndEffector;
 
-import static edu.wpi.first.units.Units.Celsius;
-
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -26,8 +24,8 @@ public class RollerConstants {
 
     public static final Voltage coralIntakeVoltage = Units.Volts.of(1.0);
     public static final Voltage coralOuttakeVoltage = Units.Volts.of(-1.0);
-    public static final Voltage algaeIntakeVoltage = Units.Volts.of(1.0);
-    public static final Voltage algaeOuttakeVoltage = Units.Volts.of(-1.0);
+    public static final Voltage algaeIntakeVoltage = Units.Volts.of(2.0);
+    public static final Voltage algaeOuttakeVoltage = Units.Volts.of(-2.0);
 
     public static final VoltageSetpoint coralIntakeSetpoint = new VoltageSetpoint(coralIntakeVoltage);
     public static final VoltageSetpoint coralOuttakeSetpoint = new VoltageSetpoint(coralOuttakeVoltage);
@@ -65,7 +63,7 @@ public class RollerConstants {
         config.encoder
             .positionConversionFactor(gearing)
             .velocityConversionFactor(gearing);
-            
+
         return config;
     }
 

@@ -12,11 +12,11 @@ public class ControlBoard {
 
         driver.b().onTrue(s.stowManipulator());
 
-        driver.leftTrigger().onTrue(s.intakeCoral());
-        driver.rightTrigger().onTrue(s.spitCoral());
+        driver.rightBumper().onTrue(s.intakeCoral());
+        driver.rightTrigger().whileTrue(s.spitCoral());
 
         driver.leftBumper().onTrue(s.intakeAlgae());
-        driver.rightBumper().onTrue(s.spitAlgae());
+        driver.leftTrigger().whileTrue(s.spitAlgae());
 
         driver.povLeft().onTrue(s.prepOuttakeAlgae());
 
