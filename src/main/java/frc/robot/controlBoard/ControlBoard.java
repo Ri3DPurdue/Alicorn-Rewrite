@@ -6,9 +6,9 @@ import frc.robot.subsystems.Superstructure;
 public class ControlBoard {
     public static final CommandXboxController driver = new CommandXboxController(0);
     public static void bindControls(Superstructure s) {
-        driver.a().onTrue(s.outtakeCoralL1());
-        driver.x().onTrue(s.outtakeCoralL2());
-        driver.y().onTrue(s.outtakeCoralL3());
+        driver.a().onTrue(s.prepCoralL1());
+        driver.x().onTrue(s.prepCoralL2());
+        driver.y().onTrue(s.prepCoralL3());
 
         driver.b().onTrue(s.stowManipulator());
 
