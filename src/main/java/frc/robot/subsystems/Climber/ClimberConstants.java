@@ -15,7 +15,7 @@ import frc.lib.io.motor.setpoints.VoltageSetpoint;
 import frc.robot.Ports;
 
 public class ClimberConstants {
-    public static final double climberGearRatio = 1.0 / 100.0;
+    public static final double climberGearRatio = 100.0;
 
     public static final Distance pulleyRadius = Units.Inches.of(1.375 / 2);
     public static final DistanceAngleConverter converter = new DistanceAngleConverter(pulleyRadius);
@@ -56,7 +56,7 @@ public class ClimberConstants {
             .reverseSoftLimitEnabled(true)
             .reverseSoftLimit(minPosition.in(Units.Rotations));
 
-        config.encoder.positionConversionFactor(climberGearRatio);
+        config.encoder.positionConversionFactor(1.0 / climberGearRatio);
 
         config.closedLoop.pidf(0.0, 0.0, 0.0, 0.0);
 
