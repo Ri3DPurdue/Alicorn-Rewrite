@@ -19,11 +19,11 @@ import frc.robot.Robot;
 
 public class PivotConstants {
     public static final Angle epsilonThreshold = Units.Degrees.of(10.0);
-    public static final double gearing = 1.0;
+    public static final double gearing = 3.0;
     public static final DCMotor motor = DCMotor.getNeo550(1);
 
-    public static final Angle minAngle = Units.Radians.of(0.0);
-    public static final Angle maxAngle = Units.Radians.of(0.0);
+    public static final Angle minAngle = Units.Degrees.of(-26);
+    public static final Angle maxAngle = Units.Degrees.of(47);
 
     public static final Angle stowAngle = Units.Degrees.of(0.0);
     public static final Angle algaaeIntakeAngle = Units.Degrees.of(0.0);
@@ -72,8 +72,8 @@ public class PivotConstants {
             .d(0.0);
         
         config.encoder
-            .positionConversionFactor(gearing)
-            .velocityConversionFactor(gearing);
+            .positionConversionFactor(1 / gearing)
+            .velocityConversionFactor(1 / gearing);
 
         return config;    
     }
