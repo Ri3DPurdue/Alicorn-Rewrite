@@ -9,6 +9,13 @@ import frc.robot.subsystems.FourBarArm.FourBarArm;
 public class Superstructure implements Loggable {
     public final FourBarArm fourBar = new FourBarArm();
 
+    public Command stow() {
+        return Commands.parallel(
+            fourBar.stow().withName("Stow")
+        );
+    }
+
+    // ========= ALGAE COMMANDS =========
     public Command intakeAlgae() {
         return Commands.parallel(
             fourBar.intakeAlgae().withName("Intake")
@@ -21,9 +28,28 @@ public class Superstructure implements Loggable {
         );
     }
 
-    public Command stow() {
+    // ========= CORAL COMMANDS =========
+    public Command intakeCoral() {
         return Commands.parallel(
-            fourBar.stow().withName("Stow")
+            fourBar.intakeCoral().withName("Intake Coral")
+        );
+    }
+
+    public Command outtakeCoralL1() {
+        return Commands.parallel(
+            fourBar.outtakeCoralL1().withName("Outtake Coral L1")
+        );
+    }
+
+    public Command outtakeCoralL2() {
+        return Commands.parallel(
+            fourBar.outtakeCoralL2().withName("Outtake Coral L2")
+        );
+    }
+
+    public Command outtakeCoralL3() {
+        return Commands.parallel(
+            fourBar.outtakeCoralL3().withName("Outtake Coral L3")
         );
     }
 

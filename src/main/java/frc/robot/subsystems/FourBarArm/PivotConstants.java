@@ -34,7 +34,6 @@ public class PivotConstants {
     public static final Angle stowAngle = Units.Radians.of(110.0); //
 
     // Setpoints
-
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
 
     public static final PositionSetpoint deployAlgaeInSetpoint = new PositionSetpoint(deployAlgaeInAngle);

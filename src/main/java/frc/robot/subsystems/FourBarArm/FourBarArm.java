@@ -35,4 +35,12 @@ public class FourBarArm extends ComponentSubsystem {
     public Command outtakeCoralL1() {
         return pivot.applySetpointCommand(PivotConstants.deployCoralL1Setpoint);
     }
+
+    public Command outtakeCoralL2() {
+        return pivot.applySetpointCommand(PivotConstants.deployCoralL2Setpoint);
+    }
+
+    public Command outtakeCoralL3() {
+        return pivot.applySetpointCommand(PivotConstants.deployCoralL3Setpoint);
+    }
 }
