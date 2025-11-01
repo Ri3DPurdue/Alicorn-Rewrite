@@ -25,13 +25,13 @@ public class PivotConstants {
     public static final Angle minAngle = Units.Degrees.of(-21.0);
     public static final Angle maxAngle = Units.Degrees.of(57.0);
 
-    public static final Angle deployAlgaeInAngle = Units.Radians.of(0.0);
-    public static final Angle deployAlgaeOutAngle = Units.Radians.of(0.0);
-    public static final Angle deployCoralIntakeAngle = Units.Radians.of(0.0);
-    public static final Angle deployCoralL1Angle = Units.Radians.of(0.0);
-    public static final Angle deployCoralL2Angle = Units.Radians.of(0.0);
-    public static final Angle deployCoralL3Angle = Units.Radians.of(0.0);
-    public static final Angle stowAngle = Units.Radians.of(0.0);
+    public static final Angle deployAlgaeInAngle = Units.Degrees.of(0.0);
+    public static final Angle deployAlgaeOutAngle = Units.Degrees.of(0.0);
+    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(0.0);
+    public static final Angle deployCoralL1Angle = Units.Degrees.of(0.0);
+    public static final Angle deployCoralL2Angle = Units.Degrees.of(0.0);
+    public static final Angle deployCoralL3Angle = Units.Degrees.of(0.0);
+    public static final Angle stowAngle = Units.Degrees.of(57);
 
     // Setpoints
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);

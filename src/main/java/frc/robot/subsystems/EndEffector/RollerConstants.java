@@ -1,5 +1,7 @@
 package frc.robot.subsystems.EndEffector;
 
+import static edu.wpi.first.units.Units.Celsius;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
