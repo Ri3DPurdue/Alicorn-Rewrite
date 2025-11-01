@@ -69,14 +69,6 @@ public class Superstructure implements Loggable {
     }
 
     // ========= CLIMBER COMMANDS =========
-    public Command stowClimber() {
-        return climber.stow().withName("Stow");
-    }
-
-    public Command raiseClimber() {
-        return climber.raised().withName("Raise");
-    }
-
     public Command liftRobot() {
         return climber.pull().withName("Lift");
     }
