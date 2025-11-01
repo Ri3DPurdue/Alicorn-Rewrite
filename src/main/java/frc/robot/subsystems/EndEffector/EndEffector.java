@@ -1,6 +1,7 @@
 package frc.robot.subsystems.EndEffector;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import frc.lib.component.ComponentSubsystem;
 import frc.lib.component.MotorComponent;
 import frc.lib.component.ServoMotorComponent;
@@ -38,8 +39,10 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command outtakeAlgae() {
-        return command(
-            roller.applySetpointCommand(RollerConstants.algaeOuttakeSetpoint)
+        return Commands.startEnd(
+            () -> roller.applySetpoint(RollerConstants.algaeOuttakeSetpoint), 
+            () -> roller.applySetpoint(RollerConstants.idleSetpoint), 
+            this
         );
     }
 
@@ -74,8 +77,10 @@ public class EndEffector extends ComponentSubsystem {
     }
 
     public Command scoreCoral() {
-        return command(
-            roller.applySetpointCommand(RollerConstants.coralOuttakeSetpoint)
+        return Commands.startEnd(
+            () -> roller.applySetpoint(RollerConstants.coralOuttakeSetpoint), 
+            () -> roller.applySetpoint(RollerConstants.idleSetpoint), 
+            this
         );
     }
 }

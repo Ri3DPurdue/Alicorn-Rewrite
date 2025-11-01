@@ -3,7 +3,6 @@ package frc.robot.subsystems.EndEffector;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig;
 
-import edu.wpi.first.math.Pair;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.units.Units;
 import edu.wpi.first.units.measure.Angle;
@@ -22,16 +21,16 @@ public class PivotConstants {
     public static final double gearing = 3.0;
     public static final DCMotor motor = DCMotor.getNeo550(1);
 
-    public static final Angle minAngle = Units.Degrees.of(-26);
-    public static final Angle maxAngle = Units.Degrees.of(43);
+    public static final Angle minAngle = Units.Degrees.of(-26.0);
+    public static final Angle maxAngle = Units.Degrees.of(43.0);
 
     public static final Angle stowAngle = maxAngle;
-    public static final Angle algaeIntakeAngle = Units.Degrees.of(0.0);
+    public static final Angle algaeIntakeAngle = Units.Degrees.of(-20.0);
     public static final Angle algaeOuttakeAngle = Units.Degrees.of(0.0);
-    public static final Angle l1Angle = Units.Degrees.of(0.0);
-    public static final Angle l2Angle = Units.Degrees.of(0.0);
-    public static final Angle l3Angle = Units.Degrees.of(0.0);
-    public static final Angle coralIntakeAngle = Units.Degrees.of(-15);
+    public static final Angle l1Angle = Units.Degrees.of(30.0);
+    public static final Angle l2Angle = Units.Degrees.of(20.0);
+    public static final Angle l3Angle = Units.Degrees.of(10.0);
+    public static final Angle coralIntakeAngle = Units.Degrees.of(-15.0);
 
 
     public static final PositionSetpoint stowSetpoint = new PositionSetpoint(stowAngle);
@@ -46,7 +45,7 @@ public class PivotConstants {
         SparkBaseIO io = getMotorIO();
         io.overrideLoggedUnits(Units.Degrees, Units.DegreesPerSecond, Units.Celsius);
 
-        return new ServoMotorComponent<SparkBaseIO>(getMotorIO(), epsilonThreshold, stowAngle);
+        return new ServoMotorComponent<SparkBaseIO>(io, epsilonThreshold, stowAngle);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,24 +54,22 @@ public class PivotConstants {
             ? new SparkBaseIO(
                 MotorType.kBrushless, 
                 getMainConfig(), 
-                Ports.END_EFFECTOR_PIVOT_MAIN.id, 
-                Pair.of(Ports.END_EFFECTOR_PIVOT_FOLLOWER.id, false)
+                Ports.END_EFFECTOR_PIVOT_MAIN.id 
                 )
             : new SparkBaseSimIO(
                 getSimObject(),
                 motor,
                 MotorType.kBrushless, 
                 getMainConfig(), 
-                Ports.END_EFFECTOR_PIVOT_MAIN.id, 
-                Pair.of(Ports.END_EFFECTOR_PIVOT_FOLLOWER.id, false)
+                Ports.END_EFFECTOR_PIVOT_MAIN.id 
             );
     }
 
     public static final SparkBaseConfig getMainConfig() {
         SparkBaseConfig config = SparkBaseIO.getSafeSparkMaxConfig();
         config.closedLoop
-            .p(0.0)
-            .d(0.0);
+            .p(0.1)
+            .d(0.1);
         
         config.encoder
             .positionConversionFactor(1 / gearing)
