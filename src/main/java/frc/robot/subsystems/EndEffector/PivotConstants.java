@@ -23,7 +23,7 @@ public class PivotConstants {
     public static final DCMotor motor = DCMotor.getNeo550(1);
 
     public static final Angle minAngle = Units.Degrees.of(-26);
-    public static final Angle maxAngle = Units.Degrees.of(47);
+    public static final Angle maxAngle = Units.Degrees.of(43);
 
     public static final Angle stowAngle = Units.Degrees.of(40);
     public static final Angle algaeIntakeAngle = Units.Degrees.of(0.0);
@@ -43,6 +43,9 @@ public class PivotConstants {
     public static final PositionSetpoint coralIntakeSetpoint = new PositionSetpoint(coralIntakeAngle);
 
     public static final ServoMotorComponent<SparkBaseIO> getPivot() {
+        SparkBaseIO io = getMotorIO();
+        io.overrideLoggedUnits(Units.Degrees, Units.DegreesPerSecond, Units.Celsius);
+
         return new ServoMotorComponent<SparkBaseIO>(getMotorIO(), epsilonThreshold, stowAngle);
     }
 
@@ -74,6 +77,11 @@ public class PivotConstants {
         config.encoder
             .positionConversionFactor(1 / gearing)
             .velocityConversionFactor(1 / gearing);
+        
+        config.softLimit.forwardSoftLimitEnabled(true)
+                .forwardSoftLimit(maxAngle.in(Units.Rotations))
+                .reverseSoftLimitEnabled(true)
+                .reverseSoftLimit(minAngle.in(Units.Rotations));
 
         return config;    
     }
