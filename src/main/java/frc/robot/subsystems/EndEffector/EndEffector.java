@@ -22,6 +22,7 @@ public class EndEffector extends ComponentSubsystem {
         );
     }
 
+    // ========= ALGAE COMMANDS =========
     public Command intakeAlgae() {
         return parallel(
             pivot.applyPositionSetpointCommandWithWait(PivotConstants.algaeIntakeSetpoint),
@@ -42,6 +43,7 @@ public class EndEffector extends ComponentSubsystem {
         );
     }
 
+    // ======== CORAL COMMANDS =========
     public Command intakeCoral() {
         return parallel(
             pivot.applyPositionSetpointCommandWithWait(PivotConstants.algaeIntakeSetpoint),
