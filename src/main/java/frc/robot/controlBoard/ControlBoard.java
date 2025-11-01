@@ -9,5 +9,8 @@ public class ControlBoard {
         driver.a().onTrue(s.intakeCoral());
         driver.b().onTrue(s.outtakeCoralL2());
         driver.x().onTrue(s.stow());
+
+        driver.leftBumper().whileTrue(s.driveClimberUp());
+        driver.rightBumper().whileTrue(s.driveClimberDown());
     }
 }
