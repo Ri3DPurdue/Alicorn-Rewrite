@@ -64,7 +64,7 @@ public class PivotConstants {
     }
 
     public static final SparkBaseConfig getMainConfig() {
-        SparkMaxConfig config = (SparkMaxConfig) SparkBaseIO.getSafeConfig();
+        SparkMaxConfig config = SparkBaseIO.getSafeSparkMaxConfig();
         config.closedLoop
                 .p(0.15) //
                 .d(0.15); //
