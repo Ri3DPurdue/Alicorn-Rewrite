@@ -22,6 +22,7 @@ public class Drivetrain extends SubsystemBase implements Loggable {
         rightMotor = DrivetrainConstants.getRightMotorIO();
 
         drive = new DifferentialDrive(this::driveLeft, this::driveRight);
+        drive.setDeadband(0.2);
     }
 
     private void driveLeft(double leftSpeed) {

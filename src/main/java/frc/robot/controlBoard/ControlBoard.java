@@ -23,5 +23,7 @@ public class ControlBoard {
         driver.povUp().whileTrue(s.driveClimberUp());
         driver.povDown().whileTrue(s.driveClimberDown());
         driver.povRight().whileTrue(s.liftRobot());
+
+        s.drivetrain.setDefaultCommand(s.arcadeDrive(driver::getLeftY, driver::getLeftX));
     }
 }

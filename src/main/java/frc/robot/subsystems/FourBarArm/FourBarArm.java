@@ -10,6 +10,7 @@ public class FourBarArm extends ComponentSubsystem {
 
     public FourBarArm() {
         pivot = registerComponent("Pivot", PivotConstants.getPivot());
+        pivot.resetPosition(PivotConstants.minAngle);
     }
 
     public Command stow() {

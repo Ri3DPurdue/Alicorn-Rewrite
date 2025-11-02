@@ -94,5 +94,6 @@ public class Superstructure implements Loggable {
     public void log(String path) {
         Logger.log(path, "FourBarArm", fourBar);
         Logger.log(path, "EndEffector", endEffector);
+        Logger.log(path, "Drivetrain", drivetrain);
     }
 }
