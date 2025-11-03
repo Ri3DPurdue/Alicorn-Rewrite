@@ -1,6 +1,8 @@
 package frc.robot.controlBoard;
 
+import edu.wpi.first.units.Units;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.lib.io.motor.setpoints.VoltageSetpoint;
 import frc.robot.subsystems.Superstructure;
 
 public class ControlBoard {
@@ -13,9 +15,11 @@ public class ControlBoard {
         driver.b().onTrue(s.stowManipulator());
 
         driver.rightBumper().onTrue(s.intakeCoral());
+        driver.rightBumper().onFalse(s.holdRoller());
         driver.rightTrigger().whileTrue(s.spitCoral());
 
         driver.leftBumper().onTrue(s.intakeAlgae());
+        driver.leftBumper().onFalse(s.idleRoller());
         driver.leftTrigger().whileTrue(s.spitAlgae());
 
         driver.povLeft().onTrue(s.prepOuttakeAlgae());

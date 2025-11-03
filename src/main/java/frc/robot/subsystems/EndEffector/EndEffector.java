@@ -84,4 +84,12 @@ public class EndEffector extends ComponentSubsystem {
             this
         );
     }
+
+    public Command idleRoller() {
+        return command(roller.applySetpointCommand(RollerConstants.idleSetpoint));
+    }
+
+    public Command holdRoller() {
+        return command(roller.applySetpointCommand(RollerConstants.holdingSetpoint));
+    }
 }

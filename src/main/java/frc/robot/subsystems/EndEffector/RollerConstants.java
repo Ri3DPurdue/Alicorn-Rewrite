@@ -22,15 +22,17 @@ public class RollerConstants {
     public static final double gearing = 1.0;
     public static final DCMotor motor = DCMotor.getNeo550(1);
 
-    public static final Voltage coralIntakeVoltage = Units.Volts.of(1.0);
+    public static final Voltage coralIntakeVoltage = Units.Volts.of(6.0);
     public static final Voltage coralOuttakeVoltage = Units.Volts.of(-1.0);
-    public static final Voltage algaeIntakeVoltage = Units.Volts.of(2.0);
+    public static final Voltage algaeIntakeVoltage = Units.Volts.of(8.0);
     public static final Voltage algaeOuttakeVoltage = Units.Volts.of(-2.0);
+    public static final Voltage holdingVoltage = Units.Volts.of(0.5);
 
     public static final VoltageSetpoint coralIntakeSetpoint = new VoltageSetpoint(coralIntakeVoltage);
     public static final VoltageSetpoint coralOuttakeSetpoint = new VoltageSetpoint(coralOuttakeVoltage);
     public static final VoltageSetpoint algaeIntakeSetpoint = new VoltageSetpoint(algaeIntakeVoltage);
     public static final VoltageSetpoint algaeOuttakeSetpoint = new VoltageSetpoint(algaeOuttakeVoltage);
+    public static final VoltageSetpoint holdingSetpoint = new VoltageSetpoint(holdingVoltage);
 
     public static final IdleSetpoint idleSetpoint = new IdleSetpoint();
 
@@ -63,6 +65,8 @@ public class RollerConstants {
         config.encoder
             .positionConversionFactor(gearing)
             .velocityConversionFactor(gearing);
+
+        config.smartCurrentLimit(30);
 
         return config;
     }

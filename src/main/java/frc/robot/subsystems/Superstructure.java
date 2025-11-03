@@ -39,6 +39,14 @@ public class Superstructure implements Loggable {
         return endEffector.outtakeAlgae().withName("Spit Algae");
     }
 
+    public Command idleRoller() {
+        return endEffector.idleRoller();
+    }
+
+    public Command holdRoller() {
+        return endEffector.holdRoller();
+    }
+
     // ========= CORAL COMMANDS =========
     public Command intakeCoral() {
         return Commands.parallel(

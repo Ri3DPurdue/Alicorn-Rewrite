@@ -27,10 +27,10 @@ public class PivotConstants {
 
     public static final Angle deployAlgaeInAngle = Units.Degrees.of(-20.0);
     public static final Angle deployAlgaeOutAngle = Units.Degrees.of(-20.0);
-    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(0.0);
-    public static final Angle deployCoralL1Angle = Units.Degrees.of(10.0);
-    public static final Angle deployCoralL2Angle = Units.Degrees.of(20.0);
-    public static final Angle deployCoralL3Angle = Units.Degrees.of(30.0);
+    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(20.0);
+    public static final Angle deployCoralL1Angle = Units.Degrees.of(30.0);
+    public static final Angle deployCoralL2Angle = Units.Degrees.of(40.0);
+    public static final Angle deployCoralL3Angle = Units.Degrees.of(55.0);
     public static final Angle stowAngle = minAngle;
 
     // Setpoints
@@ -81,7 +81,7 @@ public class PivotConstants {
                 .reverseSoftLimitEnabled(true)
                 .reverseSoftLimit(minAngle.in(Units.Rotations));
 
-        config.idleMode(SparkMaxConfig.IdleMode.kCoast);
+        config.idleMode(SparkMaxConfig.IdleMode.kBrake);
         return config;
     }
 

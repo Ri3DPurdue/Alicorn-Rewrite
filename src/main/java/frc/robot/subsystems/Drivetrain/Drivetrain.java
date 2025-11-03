@@ -14,8 +14,8 @@ import frc.lib.io.motor.setpoints.VoltageSetpoint;
 
 public class Drivetrain extends SubsystemBase implements Loggable {
     private final DifferentialDrive drive;
-    private final MotorIO leftMotor;
-    private final MotorIO rightMotor;
+    public final MotorIO leftMotor;
+    public final MotorIO rightMotor;
 
     public Drivetrain() {
         leftMotor = DrivetrainConstants.getLeftMotorIO();
@@ -26,11 +26,11 @@ public class Drivetrain extends SubsystemBase implements Loggable {
     }
 
     private void driveLeft(double leftSpeed) {
-        leftMotor.applySetpoint(new VoltageSetpoint(Units.Volts.of(leftSpeed * 11.0)));
+        leftMotor.applySetpoint(new VoltageSetpoint(DrivetrainConstants.maxVoltage.times(leftSpeed)));
     }
 
     private void driveRight(double rightSpeed) {
-        rightMotor.applySetpoint(new VoltageSetpoint(Units.Volts.of(rightSpeed * 11.0)));
+        rightMotor.applySetpoint(new VoltageSetpoint(DrivetrainConstants.maxVoltage.times(rightSpeed)));
     }
 
     public Command arcadeDrive(DoubleSupplier forward, DoubleSupplier rotation) {
