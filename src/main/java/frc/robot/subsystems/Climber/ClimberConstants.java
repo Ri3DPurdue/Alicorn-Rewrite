@@ -11,9 +11,9 @@ import frc.lib.io.motor.setpoints.VoltageSetpoint;
 import frc.robot.Ports;
 
 public class ClimberConstants {
-    public static final Voltage pullVoltage = Units.Volts.of(12.0);
-    public static final Voltage driveUpVoltage = Units.Volts.of(2.0);
-    public static final Voltage driveDownVoltage = Units.Volts.of(-2.0);
+    public static final Voltage pullVoltage = Units.Volts.of(-10.0);
+    public static final Voltage driveUpVoltage = Units.Volts.of(6.0);
+    public static final Voltage driveDownVoltage = Units.Volts.of(-4.0);
 
     public static final VoltageSetpoint pullSetpoint = new VoltageSetpoint(pullVoltage);
     public static final VoltageSetpoint driveUpSetpoint = new VoltageSetpoint(driveUpVoltage);

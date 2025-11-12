@@ -13,6 +13,7 @@ public class EndEffector extends ComponentSubsystem {
 
     public EndEffector() {
         pivot = registerComponent("Pivot", PivotConstants.getPivot());
+        pivot.resetPosition(PivotConstants.minAngle);
         roller = registerComponent("Roller", RollerConstants.getRoller());
     }
 
@@ -27,7 +28,7 @@ public class EndEffector extends ComponentSubsystem {
     public Command intakeAlgae() {
         return parallel(
             pivot.applyPositionSetpointCommandWithWait(PivotConstants.algaeIntakeSetpoint),
-            roller.applySetpointCommand(RollerConstants.algaeOuttakeSetpoint)
+            roller.applySetpointCommand(RollerConstants.algaeIntakeSetpoint)
         );
     }
 
@@ -49,8 +50,8 @@ public class EndEffector extends ComponentSubsystem {
     // ======== CORAL COMMANDS =========
     public Command intakeCoral() {
         return parallel(
-            pivot.applyPositionSetpointCommandWithWait(PivotConstants.algaeIntakeSetpoint),
-            roller.applySetpointCommand(RollerConstants.algaeOuttakeSetpoint)
+            pivot.applyPositionSetpointCommandWithWait(PivotConstants.coralIntakeSetpoint),
+            roller.applySetpointCommand(RollerConstants.coralIntakeSetpoint)
         );
     }
 
@@ -82,5 +83,13 @@ public class EndEffector extends ComponentSubsystem {
             () -> roller.applySetpoint(RollerConstants.idleSetpoint), 
             this
         );
+    }
+
+    public Command idleRoller() {
+        return command(roller.applySetpointCommand(RollerConstants.idleSetpoint));
+    }
+
+    public Command holdRoller() {
+        return command(roller.applySetpointCommand(RollerConstants.holdingSetpoint));
     }
 }

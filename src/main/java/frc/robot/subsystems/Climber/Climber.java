@@ -17,24 +17,23 @@ public class Climber extends ComponentSubsystem {
     }
 
     public Command pull() {
-        return command(
-            climber.applySetpointCommand(ClimberConstants.pullSetpoint)
-        );
+        return parallel(
+            climber.applySetpointCommand(ClimberConstants.pullSetpoint),
+            Commands.idle()
+        ).finallyDo(() -> climber.applySetpoint(new IdleSetpoint()));
     }
 
     public Command driveUp() {
-        return Commands.startEnd(() -> {
-            climber.applySetpoint(ClimberConstants.driveUpSetpoint);
-        }, () -> {
-            climber.applySetpoint(new IdleSetpoint());
-        }, this);
+        return parallel(
+            climber.applySetpointCommand(ClimberConstants.driveUpSetpoint),
+            Commands.idle()
+        ).finallyDo(() -> climber.applySetpoint(new IdleSetpoint()));
     }
 
     public Command driveDown() {
-        return Commands.startEnd(() -> {
-            climber.applySetpoint(ClimberConstants.driveDownSetpoint);
-        }, () -> {
-            climber.applySetpoint(new IdleSetpoint());
-        }, this);
+        return parallel(
+            climber.applySetpointCommand(ClimberConstants.driveDownSetpoint),
+            Commands.idle()
+        ).finallyDo(() -> climber.applySetpoint(new IdleSetpoint()));
     }
 }

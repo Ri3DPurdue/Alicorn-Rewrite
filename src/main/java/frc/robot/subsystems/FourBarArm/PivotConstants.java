@@ -22,15 +22,15 @@ public class PivotConstants {
     public static final double gearing = (100.0 / 1.0) * (26.0 / 16.0);
     public static final DCMotor motor = DCMotor.getNEO(1);
 
-    public static final Angle minAngle = Units.Degrees.of(-21.0);
-    public static final Angle maxAngle = Units.Degrees.of(57.0);
+    public static final Angle minAngle = Units.Degrees.of(-69.0);
+    public static final Angle maxAngle = Units.Degrees.of(59.5);
 
     public static final Angle deployAlgaeInAngle = Units.Degrees.of(-20.0);
-    public static final Angle deployAlgaeOutAngle = Units.Degrees.of(-10.0);
-    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(40.0);
-    public static final Angle deployCoralL1Angle = Units.Degrees.of(10.0);
-    public static final Angle deployCoralL2Angle = Units.Degrees.of(20.0);
-    public static final Angle deployCoralL3Angle = Units.Degrees.of(30.0);
+    public static final Angle deployAlgaeOutAngle = Units.Degrees.of(-20.0);
+    public static final Angle deployCoralIntakeAngle = Units.Degrees.of(20.0);
+    public static final Angle deployCoralL1Angle = Units.Degrees.of(30.0);
+    public static final Angle deployCoralL2Angle = Units.Degrees.of(40.0);
+    public static final Angle deployCoralL3Angle = Units.Degrees.of(55.0);
     public static final Angle stowAngle = minAngle;
 
     // Setpoints
@@ -69,8 +69,8 @@ public class PivotConstants {
     public static final SparkBaseConfig getMainConfig() {
         SparkMaxConfig config = SparkBaseIO.getSafeSparkMaxConfig();
         config.closedLoop
-                .p(0.4)
-                .d(0.15);
+                .p(5.0)
+                .d(0.0);
 
         config.smartCurrentLimit(20);
         config.encoder.positionConversionFactor(1.0 / gearing)
